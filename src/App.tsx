@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch('http://localhost:8000/products')
+        const response = await fetch('/api/products')
         if (!response.ok) {
           throw new Error('Failed to fetch products')
         }
