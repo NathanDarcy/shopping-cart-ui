@@ -1,7 +1,8 @@
 import { createContext, useContext } from 'react'
+import type { CartItem } from '../components/CartProvider'
 import type { Product } from '../domain/product.types'
 export type CartContext = {
-  cart: Product[]
+  cart: CartItem[]
   addToCart: (product: Product) => void
 }
 
