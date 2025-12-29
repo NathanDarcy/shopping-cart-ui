@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
+import ProductCard from './components/ProductCard'
+import ProductList from './components/ProductList'
 
 export type Product = {
   id: number
   image: string
   name: string
+  description: string
+  category: string
+  price: number
+  quantity: number
+  rating: number
 }
 
 export default function App() {
@@ -38,22 +45,7 @@ export default function App() {
       {loading && <p>Loading...</p>}
       {error && <div className="error">X {error}</div>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white rounded-lg shadow p-4 flex flex-col"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="h-40 object-cover rounded mb-4"
-            />
-
-            <h2 className="text-xl fond-semibold">{product.name}</h2>
-          </div>
-        ))}
-      </div>
+      <ProductList products={products} />
     </div>
   )
 }
