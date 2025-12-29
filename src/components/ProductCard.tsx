@@ -1,10 +1,12 @@
-import type { Product } from '../App'
+import { useCart } from '../context/CartContext'
+import type { Product } from '../domain/product.types'
 
 export type ProductCardProps = {
   product: Product
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart()
   return (
     <div className="bg-white rounded-lg shadow p-4 flex flex-col">
       <img
@@ -16,6 +18,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       <h2 className="text-xl fond-semibold">{product.name}</h2>
       <p className="test-gray-500 text-sm mb-2">{product.description}</p>
       <p className="font-bold text-lg">${product.price.toFixed(2)}</p>
+      <button
+        onClick={() => addToCart(product)}
+        className="bg-blue-600 text-white mt-3 px-4 py-2 rounded transition hover:bg-blue-700"
+      >
+        Add to Cart
+      </button>
     </div>
   )
 }
