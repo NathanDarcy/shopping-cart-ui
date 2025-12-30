@@ -5,7 +5,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false)
 
-  const { cart } = useCart()
+  const { cart, removeFromCart, clearCart } = useCart()
 
   const itemCount = cart.reduce((acc, item) => {
     return acc + item.qty
@@ -55,6 +55,12 @@ export default function Header() {
                             {item.qty} x ${item.price}
                           </p>
                         </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-sm text-red-500 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -62,6 +68,12 @@ export default function Header() {
                   <div className="mt-4 flex justify-between font-semibold">
                     <span>Total:</span> <span>${totalPrice}</span>
                   </div>
+                  <button
+                    onClick={clearCart}
+                    className="mt-3 w-full bg-red-500 text-white py-1 rounded transition hover:bg-red-600"
+                  >
+                    Clear Cart
+                  </button>
                 </>
               )}
             </div>

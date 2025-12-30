@@ -4,6 +4,8 @@ import type { Product } from '../domain/product.types'
 export type CartContext = {
   cart: CartItem[]
   addToCart: (product: Product) => void
+  removeFromCart: (id: number) => void
+  clearCart: () => void
 }
 
 export const CartContext = createContext<CartContext | undefined>(undefined)
